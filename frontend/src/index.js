@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import { Todo } from './Todo';
-import { ToDOApp } from './ToDOApp';
+import { ToDoApp2 } from './ToDoApp2';
+import { ToDoAdd } from './ToDoAdd';
+import { AddForm } from './AddForm';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <Todo />
-    <ToDOApp />
+    {/* // <Todo />
+    <ToDoAdd /> */}
+    {/* <ToDoApp2 /> */}
+    <ToDoAdd />
+    <ToDoApp2 />
+
+    {/* //<AddForm /> */}
   </React.StrictMode>
 );
 
