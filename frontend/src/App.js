@@ -1,13 +1,39 @@
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 
+
+
+import { ToDoAdd } from "./ToDoAdd";
+import { NavBar } from "./NavBar";
+import { ToDoShow } from "./ToDoShow";
+import { ToDoDetail } from "./ToDoDetail";
+import { UpdateToDo } from "./UpdateToDo";
+
+
+
+
+
 function App() {
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
+    <>
+    <BrowserRouter>
+      <div>
+        <NavBar />
         
-      </header>
-    </div>
+        <Routes>
+          <Route path="/" element={<ToDoAdd />}/>
+          <Route path="/todoshow" element={<ToDoShow />}/>
+          <Route path="/:id" element={<ToDoDetail />}/>
+          <Route path="/:id/update" element={<UpdateToDo />}/>
+          
+        </Routes>
+        </div>
+    </BrowserRouter>
+    </>  
+    
   );
 }
 

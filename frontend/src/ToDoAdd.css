@@ -8,5 +8,21 @@
     margin-right: 5px;
   }
 
+.btnClass{
+  display: flex;
+  
+}
+
+  .btn1{
+    align-items: center;
+    width: 100px;
+    
+  }
+
+  .btn2{
+    /* align-items: center; */
+    width: 100px;
+    
+  }
 
  

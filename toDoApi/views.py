@@ -26,7 +26,7 @@ def todo_list(request):
         serializer = ToDoSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     
@@ -47,10 +47,10 @@ def todo_detail(request, pk):
 
 
     elif request.method == 'PUT':
-        serializer = ToDoSerializer(Todo, data=request.data,context={'request': request})
+        serializer = ToDoSerializer(instance=Todo, data=request.data,context={'request': request})
         if serializer.is_valid():
             serializer.save()
-            return Response(status=status.HTTP_204_NO_CONTENT)
+            return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         todo.delete()

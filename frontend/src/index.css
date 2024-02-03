@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.additem{
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+
+}
+
+.Showitem{
+  margin-left: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+}
