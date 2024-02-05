@@ -1,10 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
 
-import {useNavigate, useParams } from 'react-router'
 
-
-export const UpdateToDo = () => {
+export const UpdateToDo_02 = () => {
 
     const [formdata, setFormData] = useState({
         title:"",
@@ -13,8 +12,6 @@ export const UpdateToDo = () => {
         })
 
     const { id } = useParams()
-
-    const navigate = useNavigate();
 
     //load product
 
@@ -28,9 +25,12 @@ export const UpdateToDo = () => {
         })
     }
 
+    
+
     useEffect(() => {
         loadFormData()
     }, [id])
+
 
 
     const handleSubmit = (event) => {
@@ -42,12 +42,12 @@ export const UpdateToDo = () => {
         .then(response => {
             console.log('Data updated successfully', response.data);
             // Redirect or perform any necessary actions after updating
-            navigate('/todoshow')
         })
         .catch(error => {
             console.error('Error updating data', error);
         });
     }
+
 
     const handleInput = (event) => {
         const { name, value } = event.target;
@@ -89,6 +89,5 @@ export const UpdateToDo = () => {
         </form>
 
     </div>
-
   )
 }

@@ -25,11 +25,20 @@ export const ToDoAdd = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const newRecords = {...form, id: new Date().getTime().toString()}
+        if (!form.title || !form.details || !form.date) {
+          console.error('Please fill in all fields');
+          return;
+      }
+        // const newRecords = {...form, id: new Date().getTime().toString()}   // itsfor local storage with id
+
+        const newRecord = { ...form };
         
-        setFormData({...formdata, newRecords})
+        setFormData({...formdata, newRecord})
         try {
-            await axios.post(url, newRecords);
+            // Remove the 'id' field from the new record
+            delete newRecord.id;
+            
+            await axios.post(url, newRecord);
             // Clear the form after a successful submission
             setForm({
               title: '',

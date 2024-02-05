@@ -3,14 +3,14 @@ import axios from "axios";
 import { Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ToDoAdd.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 //using axious 
 export const ToDoShow = () => {
 
     const[mydata, Setmydata] = useState([])
 
-    
+    const { pk } = useParams()
 
     const url = "http://127.0.0.1:8000/todo/"
 
@@ -18,7 +18,8 @@ export const ToDoShow = () => {
         axios.get(url)
             .then(response => {
             //console.log(response.data);
-            Setmydata(response.data.reverse())   //here we add .reverse()  show last added in screen
+            Setmydata(response.data)      // .reverse()//here we add .reverse()  show last added in screen
+           
             
             
                 })
@@ -29,16 +30,16 @@ export const ToDoShow = () => {
 
     useEffect(() => {
         dataGet()
-    }, [mydata]) //when update mydata value it will automatically update 
+    }, [])                   // [mydata]  //when update mydata value it will automatically update 
       
     
    
 
   return (
     <div className="card-container">
-        {mydata.map((item, id) => (
+        {mydata.map((item, pk) => (
         <>
-        <Card key={item.id}>
+        <Card key={item.pk}>
           <Card.Body>
             
             <Card.Title>{item.title}</Card.Title>
@@ -46,7 +47,7 @@ export const ToDoShow = () => {
             <Card.Text>{item.date}</Card.Text>
           </Card.Body>
           <div className='btnClass'>
-          <Link to={`/${id}`}>
+          <Link to={`/${item.pk}`}>
             <Button className="btn btn-primary">Detail</Button>
           </Link>
           </div>

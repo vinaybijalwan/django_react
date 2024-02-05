@@ -8,13 +8,15 @@ import { Link } from 'react-router-dom'
 
 export const ToDoDetail = () => {
 
-    const [formdata, SetFormdata] = useState({})
+    const [formdata, SetFormdata] = useState([])
 
-    const { id } = useParams()
+    // const { id } = useParams()
+
+    const { pk } = useParams()
 
     const getSingledata = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/todo/${id}`);
+        const response = await axios.get(`http://127.0.0.1:8000/todo/${pk}`);
         console.log('API response:', response.data);
   
         if (Array.isArray(response.data)) {
@@ -32,7 +34,7 @@ export const ToDoDetail = () => {
 
     useEffect(() => {
       getSingledata()
-    }, [id])
+    }, [pk])
     
   return (
     <div className="card-container">
@@ -42,7 +44,7 @@ export const ToDoDetail = () => {
           <p>{formdata.date}</p>
        </div>
     <div className='btnClass'>
-          <Link to={`/${id}/update`}>
+          <Link to={`/todoshow/${formdata.pk}/update`}>       
             <Button className="btn btn-primary">Update</Button>
           </Link>
           </div>
