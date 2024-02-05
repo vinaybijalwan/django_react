@@ -47,7 +47,7 @@ def todo_detail(request, pk):
 
 
     elif request.method == 'PUT':
-        serializer = ToDoSerializer(instance=Todo, data=request.data,context={'request': request})
+        serializer = ToDoSerializer(instance=todo, data=request.data,context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
