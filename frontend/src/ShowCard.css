@@ -1,0 +1,35 @@
+
+body{
+    background-color: #b3e5fc;
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.main{
+  display: flex;
+}
+
+h2{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.card {
+    width: 450px;
+    border: none;
+    border-radius: 10px;
+    background-color: #bdb6b6;
+    margin: auto;
+}
+
+.stats {
+  background-color: #f2f5f8;
+  margin-right: 20px;
+}
+
+.articles {
+  font-size: 10px;
+
+}
+
+
